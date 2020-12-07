@@ -1,0 +1,806 @@
+<html>
+ <head>
+  <meta charset="UTF-8">
+  </meta>
+  <link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css" rel="stylesheet">
+  </link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+  </script>
+  <style>
+   .text {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 14px;
+    }
+    .versuslt1 {
+      font-weight: bold;
+    }
+    .versusgt1 {
+      font-weight: bold;
+    }
+    .versuslt2 {
+      font-weight: bold;
+      color: red;
+      font-size: 14px !important;;
+    }
+    .versusgt2 {
+      font-weight: bold;
+      color: red;
+      font-size: 14px !important;;
+    }
+    .gold {
+      background-color: #D4AF37;
+    }
+    .silver {
+      background-color: #C0C0C0;
+    }
+    .bronze {
+      background-color: #cd7f32;
+    }
+    .red5 {
+      background-color: #F50000;
+    }
+    .red4 {
+      background-color: #ff704d;
+    }
+    .red3 {
+      background-color: #ff9980;
+    }
+    .red2 {
+      background-color: #ffc2b3;
+    }
+    .red1 {
+      background-color: #ffebe6;
+    }
+    .green5 {
+    }
+    .green4 {
+      background-color: #adffab;
+    }
+    .green3 {
+      background-color: #90ee90;
+    }
+    .green2 {
+      background-color: #82df83;
+    }
+    .green1 {
+      background-color: #65c368;
+    }
+    .Allies {
+      background-color: #BFDAFF;
+    }
+    .Axis {
+      background-color: #FFBFBF;
+    }
+    .nocount {
+      color: darksalmon;
+    }
+        
+    tr:nth-child(even) {background-color: #f2f2f2;}
+        
+    table.blueTable {
+      font-family: "Courier New", Courier, monospace;
+      border: 1px solid #14191B;
+      background-color: #F3FFFB;
+      text-align: center;
+      border-collapse: collapse;
+      white-space: nowrap;
+    }
+    .bars {
+      width: 13em;
+      text-align: left;
+    }
+    table.blueTable td, table.blueTable th {
+      border: 1px solid #AAAAAA;
+      padding: 0px 6px;
+    }
+    table.blueTable tbody td {
+      font-size: 12px;
+    }
+    table.blueTable thead {
+      background: #030D14;
+      background: -moz-linear-gradient(top, #42494f 0%, #1c252b 66%, #030D14 100%);
+      background: -webkit-linear-gradient(top, #42494f 0%, #1c252b 66%, #030D14 100%);
+      background: linear-gradient(to bottom, #42494f 0%, #1c252b 66%, #030D14 100%);
+      border-bottom: 0px solid #444444;
+    }
+    table.blueTable thead th {
+      font-size: 14px;
+      font-weight: bold;
+      color: #EFEFEF;
+      text-align: center;
+      border-left: 4px solid #D0E4F5;
+    }
+    table.blueTable thead th:first-child {
+      border-left: none;
+    }
+    
+    table.blueTable tfoot .links {
+      text-align: right;
+    }
+    table.blueTable tfoot .links a{
+      display: inline-block;
+      background: #1C6EA4;
+      color: #FFFFFF;
+      padding: 2px 8px;
+      border-radius: 5px;
+    }
+        
+    progress[value]::-webkit-progress-bar {
+      background-color: #B1E59F;
+      foreground-color: #FF5757;
+      border-radius: 2px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+    }
+    .ui-tooltip {
+        white-space: pre-line;
+    	font-size:12;
+    	background: #A0A0A0;
+    	box-shadow: none;
+    	border-style: solid;
+    	border-width: 10px 10px 0;
+    	z-index: 0;
+    }
+  </style>
+ </head>
+ <body>
+  <h2 class="header">
+   Welcome to RTCW NA PUB RTCWPRO N.Virginia
+  </h2>
+  <p class="text">
+   version = Wolf 1.41b-MP linux-i386 Nov 27 2020
+  </p>
+  <p class="text">
+   gamename = RtcwPro 1.0.1
+  </p>
+  <p class="text">
+   mapname = mp_ice
+  </p>
+  <p class="text">
+   timelimit = 10
+  </p>
+  <h3 class="header">
+   Players
+  </h3>
+  <table class="blueTable">
+   <tr>
+    <th>
+     #
+    </th>
+    <th>
+     Player
+    </th>
+    <th>
+     Score
+    </th>
+    <th>
+     Ping
+    </th>
+   </tr>
+  </table>
+  <h3 class="header">
+   main PK3 Files
+  </h3>
+  <table class="blueTable">
+   <tr>
+    <th>
+     Files
+    </th>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/adlernest_b3.pk3">
+      adlernest_b3.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/adlernest_b5.pk3">
+      adlernest_b5.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/adlernest_b5_rtcwpro.pk3">
+      adlernest_b5_rtcwpro.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/alpinespress.pk3">
+      alpinespress.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/astro-skies.pk3">
+      astro-skies.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/axis_complex.pk3">
+      axis_complex.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/back_to_carnage.pk3">
+      back_to_carnage.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/bp_badplace.pk3">
+      bp_badplace.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/bp_valhalla.pk3">
+      bp_valhalla.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/braundorf_b5_rtcw.pk3">
+      braundorf_b5_rtcw.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/brickjump_final.pk3">
+      brickjump_final.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/common-astro-spog.pk3">
+      common-astro-spog.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/curry.pk3">
+      curry.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/dzm_trickjump.pk3">
+      dzm_trickjump.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/ff_duel.pk3">
+      ff_duel.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/fnf_tournament_v2.pk3">
+      fnf_tournament_v2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/jumptown_beta.pk3">
+      jumptown_beta.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/lights.pk3">
+      lights.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mml_church_v1.pk3">
+      mml_church_v1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_aim.pk3">
+      mp_aim.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_ardennes.pk3">
+      mp_ardennes.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_base2o.pk3">
+      mp_base2o.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_basement.pk3">
+      mp_basement.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_bin.pk3">
+      mp_bin.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_blauckaus.pk3">
+      mp_blauckaus.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_breakout.pk3">
+      mp_breakout.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_bridge1c.pk3">
+      mp_bridge1c.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_cannon.pk3">
+      mp_cannon.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_communique.pk3">
+      mp_communique.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_ctfmultidemo.pk3">
+      mp_ctfmultidemo.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_forest.pk3">
+      mp_forest.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_frogpond_beta.pk3">
+      mp_frogpond_beta.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_frogpond_beta2.pk3">
+      mp_frogpond_beta2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_kolotrickjump.pk3">
+      mp_kolotrickjump.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_marketgarden.pk3">
+      mp_marketgarden.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pacific.pk3">
+      mp_pacific.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_1-1.pk3">
+      mp_pak_1-1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_castle2030.pk3">
+      mp_pak_castle2030.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_castle3040.pk3">
+      mp_pak_castle3040.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_chateau3020.pk3">
+      mp_pak_chateau3020.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_chateau3025.pk3">
+      mp_pak_chateau3025.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_infamy.pk3">
+      mp_pak_infamy.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_kungfugrip.pk3">
+      mp_pak_kungfugrip.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pak_te_kungfugrip.pk3">
+      mp_pak_te_kungfugrip.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_password2_v1.pk3">
+      mp_password2_v1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_pburg.pk3">
+      mp_pburg.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_resurrection.pk3">
+      mp_resurrection.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_river.pk3">
+      mp_river.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_theriver.pk3">
+      mp_theriver.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/mp_wizernes.pk3">
+      mp_wizernes.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/oasis_a1.pk3">
+      oasis_a1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/p_complex_b1.pk3">
+      p_complex_b1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/p_complex_b3.pk3">
+      p_complex_b3.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/pak0.pk3">
+      pak0.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/realjump_v1.5fdafd22.pk3">
+      realjump_v1.5fdafd22.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/realjump_v1.pk3">
+      realjump_v1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/rtcw_trickjump3_v2.pk3">
+      rtcw_trickjump3_v2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/soundpack.pk3">
+      soundpack.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/strayjump1.pk3">
+      strayjump1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/strayjump2.pk3">
+      strayjump2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/supplybeta1.pk3">
+      supplybeta1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_cipher_alpha.pk3">
+      te_cipher_alpha.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_cipher_b2.pk3">
+      te_cipher_b2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_cipher_b3.pk3">
+      te_cipher_b3.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_cipher_beta.pk3">
+      te_cipher_beta.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_complex_b1.pk3">
+      te_complex_b1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_delivery_b1.pk3">
+      te_delivery_b1.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_escape2.pk3">
+      te_escape2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_frostbite.pk3">
+      te_frostbite.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_nordic_b2.pk3">
+      te_nordic_b2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_nordic_beta.pk3">
+      te_nordic_beta.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_pacific.pk3">
+      te_pacific.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_pacific2.pk3">
+      te_pacific2.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_sub.pk3">
+      te_sub.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/te_ufo.pk3">
+      te_ufo.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/tj_xp3_t02.pk3">
+      tj_xp3_t02.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/tundra_rush_beta.pk3">
+      tundra_rush_beta.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/ufo_homiefix.pk3">
+      ufo_homiefix.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/viojump1_exp.pk3">
+      viojump1_exp.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/viojump1_exp4.pk3">
+      viojump1_exp4.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/wl_beach.pk3">
+      wl_beach.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/wl_river.pk3">
+      wl_river.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/wl_tundra_rush.pk3">
+      wl_tundra_rush.pk3
+     </a>
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="https://s3.amazonaws.com/donkanator.com/rtcw_maps/{AM}trickjump_2.pk3">
+      {AM}trickjump_2.pk3
+     </a>
+    </td>
+   </tr>
+  </table>
+  <h3 class="header">
+   rtcwpro PK3 Files
+  </h3>
+  <table class="blueTable">
+   <tr>
+    <th>
+     Files
+    </th>
+   </tr>
+   <tr>
+    <td>
+     rtcwpro.ce30ef76.pk3
+    </td>
+   </tr>
+   <tr>
+    <td>
+     rtcwpro.pk3
+    </td>
+   </tr>
+   <tr>
+    <td>
+     rtcwpro_101.pk3
+    </td>
+   </tr>
+  </table>
+ </body>
+</html>
