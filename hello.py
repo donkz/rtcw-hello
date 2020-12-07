@@ -54,6 +54,10 @@ main_exceptions = [
          'mp_pakmaps4.pk3',
          'mp_pakmaps5.pk3',
          'mp_pakmaps6.pk3',
+         'sp_rend2_shaders0.pk3',
+         'mp_bin.pk3',
+         'mp_bin0.pk3',
+         'pak0.pk3'
  ]
 
 folder_exceptions = []
