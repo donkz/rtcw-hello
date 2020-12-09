@@ -22,19 +22,23 @@ serverkey = "RTCWPro"
 modfolder = "rtcwpro"
 mainfolder = "main" #windows is not case sentitive, but linux is
 essential_fields = ["version","gamename","mapname","timelimit"]
+secret_triggers = ["pass", "rcon", "ref"]
 
 output_file_path = r'/var/www/html/index.html'
 game_path = r"/home/rtcwserver/serverfiles/" #linux
+server_tmp_folder = r'/home/rtcwserver/.wolf/'
 if sys.platform == "linux" or sys.platform == "linux2":
     print("[ ] Linux platform properties")
 elif sys.platform == "win32":
     game_path = r"D:\Games\Return to Castle Wolfenstein\\" #windows
     output_file_path = "index.html"
+    server_tmp_folder = r"D:\Games\Return to Castle Wolfenstein\\"
     print("[ ] Windows platform properties")
 
 
 
 data_folder = Path(game_path)
+server_config_path = Path(server_tmp_folder) / modfolder / "wolfconfig_mp.cfg"
 
 main_exceptions = [
          'mp_pak0.pk3',
@@ -823,6 +827,23 @@ def list_pk3_files(path, folder):
     sorted_pk3_files = sorted(pk3_files)
     return sorted_pk3_files
 
+def list_config_vars(server_config_path):
+    if not server_config_path.exists():
+        return []
+    
+    with open(server_config_path, 'r') as config:
+        lines = config.readlines()
+        #print("[ ] Found config " + str(server_config_path) + " with " + str(len(lines)) + " lines")
+        new_lines = []
+        for line in lines:
+            for secretstring in secret_triggers:
+                if secretstring in line.lower():
+                    print("Ommitting " + line.strip() + " matching " + secretstring)
+                    break
+                new_lines.append(line)
+    return new_lines
+    
+
 def make_hmtl (output_file_name, tables, report, essential_fields):
     soup = BeautifulSoup("","lxml")
         
@@ -995,6 +1016,7 @@ def teams_to_html(report, columns=None, make_links = True):
 if __name__ == "__main__":
     main_list = list_pk3_files(game_path, mainfolder)
     folder_list = list_pk3_files(game_path, modfolder)
+    config_vars = list_config_vars(server_config_path)
     
     main_list = list(set(main_list) - set(main_exceptions))
     folder_list = list(set(folder_list) - set(folder_exceptions))
@@ -1003,11 +1025,13 @@ if __name__ == "__main__":
     
     main_table = list_to_html(sorted(main_list), make_links=True)
     folder_table = list_to_html(sorted(folder_list), make_links=False)
+    config_table = list_to_html(sorted(config_vars), make_links=False)
     player_table = teams_to_html(report)
     
     tables = {}
     tables["Players"] = player_table
     tables[mainfolder + " PK3 Files"] = main_table
     tables[modfolder +" PK3 Files"] = folder_table
+    tables["Server settings"] = config_table
     
     make_hmtl(output_file_path,tables, report, essential_fields)
