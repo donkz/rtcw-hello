@@ -17,12 +17,21 @@ import sys
 from pathlib import Path
 import logging
 
-servers = {"LOCAL" : ['127.0.0.1', 27960], "LOCALEC2" : ['172.31.85.10', 27960],"RTCWPro" : ['34.235.224.222', 27960], "OSP" : ['34.235.224.222', 27961], "TK" : ['74.91.116.89', 27960]}
-serverkey = "RTCWPro"
+servers = {
+        "LOCAL" : ['127.0.0.1', 27960], 
+        "LOCALEC2" : ['172.31.85.10', 27960], 
+        "LOCALEC2Test" : ['172.31.85.10', 27962],
+        "RTCWPro" : ['34.235.224.222', 27960], 
+        "OSP" : ['34.235.224.222', 27961], 
+        "TK" : ['74.91.116.89', 27960],
+        "ECGN" : ['104.194.9.163', 27960]
+        }
+serverkey = "ECGN"
 modfolder = "rtcwpro"
 mainfolder = "main" #windows is not case sentitive, but linux is
 essential_fields = ["version","gamename","mapname","timelimit"]
 secret_triggers = ["pass", "rcon", "ref"]
+cfg_exclude = [" vm_", " r_", " a1"," a2"," a3"," a4"," a5", " net_", " com_", " cg_", " cl_"]
 
 output_file_path = r'/var/www/html/index.html'
 game_path = r"/home/rtcwserver/serverfiles/" #linux
@@ -836,11 +845,18 @@ def list_config_vars(server_config_path):
         #print("[ ] Found config " + str(server_config_path) + " with " + str(len(lines)) + " lines")
         new_lines = []
         for line in lines:
+            append = True
             for secretstring in secret_triggers:
                 if secretstring in line.lower():
+                    append = False
                     print("Ommitting " + line.strip() + " matching " + secretstring)
                     break
-                new_lines.append(line)
+            for cfg_string in cfg_exclude:
+                if cfg_string in line.lower():
+                    append = False
+                    print("Ommitting " + line.strip() + " matching " + cfg_string)
+                    break
+            if append: new_lines.append(line)
     return new_lines
     
 
@@ -948,6 +964,7 @@ def list_to_html(mylist, columns=None, make_links = False, link_loc = "https://s
     table = Tag(soup, name = "table")
     table["class"] = "blueTable"
     #table["id"] = ""
+    table["style"] = "text-align: left;"
     soup.append(table)
     tr = Tag(soup, name = "tr")
     table.append(tr)
