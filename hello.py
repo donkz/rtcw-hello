@@ -644,12 +644,25 @@ def get_report(server_name, server, port):
         
     players_raw = last_elem_split[1:-1]
     
+    if "RtcwPro" in si_dict.get("gamename","safety"):
+        player_nums = si_dict["P"].replace("-", "")
+        for num, char in enumerate(player_nums):
+            #print(num, char)
+            if char == "1":
+                allies_no.append(num)
+            elif char == "2":
+                axis_no.append(num)
+            else:
+                print("Unknown char in player string " + si_dict["P"])
+            
+                
+    
     colors = setup_colors()
     
     axis_players = {}
     allies_players = {}
     other_players = {}
-    for index, player in enumerate(players_raw, start=1):
+    for index, player in enumerate(players_raw, start=0): #OSP was 1 for a reason i dont remember
         player_split = player.split(" ")
         name = stripColors(player_split[2], colors)
         if index in allies_no: 
@@ -1005,7 +1018,7 @@ def teams_to_html(report, columns=None, make_links = True):
         tr.append(th)
         th.append(col)
     for team in teams:
-        if 'Players_Allies' in report['serverinfo'] and 'Players_Axis' in report['serverinfo']:
+        if ('Players_Allies' in report['serverinfo'] and 'Players_Axis' in report['serverinfo']) or             ("RtcwPro" in report['serverinfo'].get("gamename","safety") and "P" in report['serverinfo']):
             tr = Tag(soup, name = "tr")
             th = Tag(soup, name = "th")
             th["colspan"]=2
