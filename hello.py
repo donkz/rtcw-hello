@@ -645,23 +645,23 @@ def get_report(server_name, server, port):
     players_raw = last_elem_split[1:-1]
     
     if "RtcwPro" in si_dict.get("gamename","safety"):
-        player_nums = si_dict["P"].replace("-", "")
+        player_nums = si_dict.get("P","").replace("-", "")
         for num, char in enumerate(player_nums):
             #print(num, char)
-            if char == "1":
+            if char == "2":
                 allies_no.append(num)
-            elif char == "2":
+            elif char == "1":
                 axis_no.append(num)
+            elif char == "3":
+                pass # no team = spec
             else:
-                print("Unknown char in player string " + si_dict["P"])
+                print("Unknown char in player P string " + char)
             
-                
-    
     colors = setup_colors()
-    
     axis_players = {}
     allies_players = {}
     other_players = {}
+    
     for index, player in enumerate(players_raw, start=0): #OSP was 1 for a reason i dont remember
         player_split = player.split(" ")
         name = stripColors(player_split[2], colors)
